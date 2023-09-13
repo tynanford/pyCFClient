@@ -15,12 +15,15 @@ from requests.adapters import HTTPAdapter
 from requests.exceptions import HTTPError
 from urllib3.poolmanager import PoolManager
 from copy import copy
+import urllib3
 try:
     from json import JSONDecoder, JSONEncoder
 except ImportError:
     from simplejson import JSONDecoder, JSONEncoder
 
 from ._conf import basecfg, PYTHON3
+
+urllib3.disable_warnings()
 
 class ChannelFinderClient(object):
     __jsonheader = {'content-type': 'application/json', 'accept': 'application/json'}
